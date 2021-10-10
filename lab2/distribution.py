@@ -1,89 +1,56 @@
 import numpy as np
 
-def generate_distribution (N, a, n, alfa):
-    r = np.random.sample(N)
-    x = np.sort([a * np.sqrt(1 - (1 - i)**2) for i in r])
+def generate_information_flow(N :int, alfa: float, beta: float, q: float, t: int):
+        
+    flow = (beta - alfa) * np.random.sample(N) + alfa + q
+    
+    summ = 0
+    intervals = []
+    sub_interval = []
+    time_interval = []
+    time = 0
+    for x in flow:
+        summ += round(x, 2)
+        if summ <= t:
+            sub_interval.append(round(x, 2))
+        else:
+            time_interval.append({"start" : time, "end" : time + t})
+            time += t
+            intervals.append(sub_interval)
+            sub_interval = [round(x, 2)]
+            summ = round(x, 2)
 
-    min, max = np.min(x), np.max(x)
+    # intervals.append(sub_interval)
 
-    # n = int(np.log2(N)) + 1
+    summ_applications = [round(sum(j), 2) for j in intervals]
+    number_applications = [round(len(j), 2) for j in intervals]
+    average_time_flow = [round(sum(j) / len(j), 2) for j in intervals]
 
-    # step = a / n
+    table_header = ['№', 'Начало интервала', 'Конец интервала', 'Кол-во заявок', 'Ср. время заявки', 'Общее время заявок']
+    table_items = [[i + 1, time_interval[i]['start'], time_interval[i]['end'], number_applications[i], average_time_flow[i], summ_applications[i]] for i in range(len(intervals))]
 
-    p = [min]
-    p_next = np.sqrt(a**2 - (np.sqrt(a**2 - min**2) - a/n)**2)
+    info = {
+        'Кол-во потоков' : len(intervals),
+        'Общее время' : round(sum(summ_applications), 2),
+        'Cр. время заявки': round((sum(average_time_flow) / len(average_time_flow)), 2),
+        'Ср. кол-во заявок': round(sum(number_applications) / len(number_applications), 2),
+        'Ср. время потока': round(sum(summ_applications) / len(summ_applications), 2)
+    }
 
-    while(p_next < max):
-        p.append(p_next)
-        p_next = np.sqrt(a**2 - (np.sqrt(a**2 - p_next**2) - a/n)**2)
-        if (len(p) >= n): break
-    p.append(a)
-
-    # p = [i*step for i in range(n + 1)]
-
-    intervals = [{'pf': p[i], 'pe': p[i + 1]} for i in range(n)]
-
-    counters = []
-    for interval in intervals:
-        count = 0
-        for item in x:
-            if item >= interval['pf'] and item < interval['pe']:
-                count += 1
-        counters.append(count)
-
-    pc = [ interval['pe'] - (interval['pe'] - interval['pf']) / 2 for  interval in intervals ]
-
-    width = [ interval['pe'] - interval['pf'] for interval in intervals ]
-
-    height = [ (counters[i] / N) / width[i] for i in range(n)]
-
-    # chisquare = np.sum([((counters[i] - N*p[i+1])**2)/(N*p[i+1]) for i in range(n)])
-    chisquare = np.sum([(counters[i]**2) for i in range(n)]) * (n/N) - N
+    times = [item['end'] - t / 2 for item in time_interval]
+    width = [item['end'] - item['start'] for item in time_interval]
 
     graph = {
         'data': [
-            {'x' : pc, 'y' : height}, 
-            {'x': pc, 'y': height, 'type': 'bar', 'width': width}
+            {'x': times, 'y': number_applications, 'type': 'bar', 'width': width}
         ], 
         'layout': {'title': 'Гистограмма'}
     }
 
-    info = {
-        'N': N,
-        'a': a,
-        'n': n,
-        'alfa': alfa,
-        'min': round(min, 5),
-        'max': round(max, 5),
-        'chisquare': round(chisquare, 5)
-    }
-
-    table_header = ['№','Начало интервала', 'Конец интервала', 'Кол-во', 'Ширина', 'Высота', 'Частота']
-    table_items = [[
-        i + 1, 
-        round(intervals[i]['pf'], 5), 
-        round(intervals[i]['pe'], 5), 
-        counters[i], 
-        round(width[i], 5), 
-        round(height[i], 5),
-        round(counters[i] / N, 5)
-        ] for i in range(n)
-    ]
-
-     
-
-    return {
-        'graph': graph,
-        'info': info,
-        'table_header': table_header,
-        'table_items': table_items
-    }
-
-
-def generate_information_flow(N :int, alfa: float, beta: float, q: float, t: int):
-        
-    flow = (beta - alfa) * np.random_sample(N) + alfa + q
-
-    print(flow)
-        
+    return{
+        'graph' : graph,
+        'info' : info,
+        'table_header' : table_header,
+        'table_items' : table_items
+    } 
         

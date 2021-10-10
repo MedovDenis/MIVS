@@ -10,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from distribution import generate_distribution
+from distribution import generate_information_flow
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.layout = html.Div([
@@ -83,13 +83,14 @@ def generate_informations(info):
     State('my-input1', 'value'),
     State('my-input2', 'value'),
     State('my-input3', 'value'),
-    State('my-input4', 'value'))
-def generate(_, N, a, n, alfa):
-    distribution = generate_distribution(int(N), int(a), int(n), float(alfa))
+    State('my-input4', 'value'),
+    State('my-input5', 'value'))
+def generate(_, N, alfa, beta, q, t):
+    information_flow = generate_information_flow(int(N), float(alfa), float(beta), float(q), int(t))
     return (
-        distribution['graph'],
-        generate_table(distribution['table_header'], distribution['table_items']),
-        generate_informations(distribution['info']),
+        information_flow['graph'],
+        generate_table(information_flow['table_header'], information_flow['table_items']),
+        generate_informations(information_flow['info']),
     )
 
 if __name__ == '__main__':
