@@ -26,14 +26,14 @@ def generate_information_flow(N :int, alfa: float, beta: float, q: float, t: int
     number_applications = [round(len(j), 2) for j in intervals]
     average_time_flow = [round(sum(j) / len(j), 2) for j in intervals]
 
-    table_header = ['№', 'Начало интервала', 'Конец интервала', 'Кол-во заявок', 'Ср. время заявки', 'Общее время заявок']
+    table_header = ['№', 'Начало интервала', 'Конец интервала', 'Кол-во заявок', 'Ср. время заявки', 'Время потока']
     table_items = [[i + 1, time_interval[i]['start'], time_interval[i]['end'], number_applications[i], average_time_flow[i], summ_applications[i]] for i in range(len(intervals))]
 
     info = {
         'Кол-во потоков' : len(intervals),
         'Общее время' : round(sum(summ_applications), 2),
         'Cр. время заявки': round((sum(average_time_flow) / len(average_time_flow)), 2),
-        'Ср. кол-во заявок': round(sum(number_applications) / len(number_applications), 2),
+        'Ср. кол-во заявок': (int)(sum(number_applications) / len(number_applications)),
         'Ср. время потока': round(sum(summ_applications) / len(summ_applications), 2)
     }
 
@@ -44,7 +44,7 @@ def generate_information_flow(N :int, alfa: float, beta: float, q: float, t: int
         'data': [
             {'x': times, 'y': number_applications, 'type': 'bar', 'width': width}
         ], 
-        'layout': {'title': 'Гистограмма'}
+        'layout': {'title': 'График'}
     }
 
     return{
