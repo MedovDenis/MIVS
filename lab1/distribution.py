@@ -6,10 +6,6 @@ def generate_distribution (N, a, n, alfa):
 
     min, max = np.min(x), np.max(x)
 
-    # n = int(np.log2(N)) + 1
-
-    # step = a / n
-
     p = [min]
     p_next = np.sqrt(a**2 - (np.sqrt(a**2 - min**2) - a/n)**2)
 
@@ -18,8 +14,6 @@ def generate_distribution (N, a, n, alfa):
         p_next = np.sqrt(a**2 - (np.sqrt(a**2 - p_next**2) - a/n)**2)
         if (len(p) >= n): break
     p.append(a)
-
-    # p = [i*step for i in range(n + 1)]
 
     intervals = [{'pf': p[i], 'pe': p[i + 1]} for i in range(n)]
 
@@ -37,7 +31,10 @@ def generate_distribution (N, a, n, alfa):
 
     height = [ (counters[i] / N) / width[i] for i in range(n)]
 
-    # chisquare = np.sum([((counters[i] - N*p[i+1])**2)/(N*p[i+1]) for i in range(n)])
+    m = sum(x) / len(x)
+
+    d = sum([(i - m)**2 for i in x]) / len(x)
+
     chisquare = np.sum([(counters[i]**2) for i in range(n)]) * (n/N) - N
 
     graph = {
@@ -55,7 +52,9 @@ def generate_distribution (N, a, n, alfa):
         'alfa': alfa,
         'min': round(min, 5),
         'max': round(max, 5),
-        'chisquare': round(chisquare, 5)
+        'chisquare': round(chisquare, 5),
+        'M' : round(m, 5),
+        'D' : round(d, 5)
     }
 
     table_header = ['№','Начало интервала', 'Конец интервала', 'Кол-во', 'Ширина', 'Высота', 'Частота']

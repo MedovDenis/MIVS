@@ -1,9 +1,3 @@
-# https://dash.plotly.com/basic-callbacks
-# https://dash-bootstrap-components.opensource.faculty.ai/docs/components/list_group/
-# https://bootstrap-4.ru/docs/5.1/layout/columns/
-
-# http://127.0.0.1:8050/
-
 import dash
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
