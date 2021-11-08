@@ -20,8 +20,6 @@ def generate_information_flow(N :int, alfa: float, beta: float, q: float, t: int
             sub_interval = [round(x, 2)]
             summ = round(x, 2)
 
-    # intervals.append(sub_interval)
-
     summ_applications = [round(sum(j), 2) for j in intervals]
     number_applications = [round(len(j), 2) for j in intervals]
     average_time_flow = [round(sum(j) / len(j), 2) for j in intervals]
