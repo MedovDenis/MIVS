@@ -1,0 +1,22 @@
+{
+    "rice":{
+        "img":"rice.png",
+        "max_time":30,
+        "min_time":25
+    },
+    "omelette":{
+        "img":"omelette.png",
+        "max_time":20,
+        "min_time":10
+    },
+    "porridge":{
+        "img":"porridge.png",
+        "max_time":35,
+        "min_time":25
+    },
+    "satay":{
+        "img":"satay.png",
+        "max_time":45,
+        "min_time":35
+    }
+}
