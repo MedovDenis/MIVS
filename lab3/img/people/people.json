@@ -1,14 +1,48 @@
 {
-    "Mark":{
-        "img":"mark.png",
+    "Adam":{
+        "img":"adam.png",
         "max_time_order":30,
         "min_time_order":5,
         "max_time_eat":75,
         "min_time_eat":35
-
     },
     "Ien":{
         "img":"ien.png",
+        "max_time_order":30,
+        "min_time_order":5,
+        "max_time_eat":75,
+        "min_time_eat":35
+    },
+    "Ashley":{
+        "img":"ashley.png",
+        "max_time_order":30,
+        "min_time_order":5,
+        "max_time_eat":75,
+        "min_time_eat":35
+    },
+    "Austen":{
+        "img":"austen.png",
+        "max_time_order":30,
+        "min_time_order":5,
+        "max_time_eat":75,
+        "min_time_eat":35
+    },
+    "Franklin":{
+        "img":"franklin.png",
+        "max_time_order":30,
+        "min_time_order":5,
+        "max_time_eat":75,
+        "min_time_eat":35
+    },
+    "Gabriel":{
+        "img":"gabriel.png",
+        "max_time_order":30,
+        "min_time_order":5,
+        "max_time_eat":75,
+        "min_time_eat":35
+    },
+    "Harry":{
+        "img":"harry.png",
         "max_time_order":30,
         "min_time_order":5,
         "max_time_eat":75,
@@ -21,4 +55,5 @@
         "max_time_eat":75,
         "min_time_eat":35
     }
+    
 }
