@@ -1,0 +1,197 @@
+;NAME	MATRIX	,R,C,N
+;NAME - имя матрицы результатов
+;R - количество уровней 1-го фактора
+;C - количество уровней 2-го фактора
+;N - количество прогонов модели для каждого сочетания уровней факторов
+
+RES	MATRIX	,2,2,10
+
+KVANT 	EQU 10			;значение 1-го уровня 1-го фактора
+TZA	EQU 10			;значение 1-го уровня 2-го фактора 
+
+
+; процедура для занесения в матрицу результатов значений откликов
+PROCEDURE ToMatr(I_,J_,K_)
+BEGIN	
+ RES[I_,J_,K_]=M1;
+END;
+
+
+RMULT 	401
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,1)	;оператор для обращения к процедуре
+CLEAR  	OFF
+RMULT 	411
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,2)
+CLEAR  	OFF
+RMULT 	421
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,3)
+CLEAR  	OFF
+RMULT 	431
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,4)
+CLEAR  	OFF
+RMULT 	441
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,5)
+CLEAR  	OFF
+RMULT 	451
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,6)
+CLEAR  	OFF
+RMULT 	461
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,7)
+CLEAR  	OFF
+RMULT 	471
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,8)
+CLEAR  	OFF
+RMULT 	481
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,9)
+CLEAR  	OFF
+RMULT 	491
+START   	1,NP
+S_ 	EQU 	ToMatr(1,1,10)
+CLEAR  	OFF
+
+
+
+KVANT 	EQU 10			;значение 1-го уровня 1-го фактора
+TZA	EQU 100			;значение 2-го уровня 2-го фактора
+
+RMULT 	401
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,1)
+CLEAR  	OFF
+RMULT 	411
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,2)
+CLEAR  	OFF
+RMULT 	421
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,3)
+CLEAR  	OFF
+RMULT 	431
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,4)
+CLEAR  	OFF
+RMULT 	441
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,5)
+CLEAR  	OFF
+RMULT 	451
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,6)
+CLEAR  	OFF
+RMULT 	461
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,7)
+CLEAR  	OFF
+RMULT 	471
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,8)
+CLEAR  	OFF
+RMULT 	481
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,9)
+CLEAR  	OFF
+RMULT 	491
+START   	1,NP
+S_ 	EQU 	ToMatr(1,2,10)
+CLEAR  	OFF
+
+
+
+KVANT	EQU 25			;значение 2-го уровня 1-го фактора
+TZA 	EQU 10			;значение 1-го уровня 2-го фактора 
+
+RMULT 	401
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,1)
+CLEAR  	OFF
+RMULT 	411
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,2)
+CLEAR  	OFF
+RMULT 	421
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,3)
+CLEAR  	OFF
+RMULT 	431
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,4)
+CLEAR  	OFF
+RMULT 	441
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,5)
+CLEAR  	OFF
+RMULT 	451
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,6)
+CLEAR  	OFF
+RMULT 	461
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,7)
+CLEAR  	OFF
+RMULT 	471
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,8)
+CLEAR  	OFF
+RMULT 	481
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,9)
+CLEAR  	OFF
+RMULT 	491
+START   	1,NP
+S_ 	EQU 	ToMatr(2,1,10)
+CLEAR  	OFF
+
+
+
+KVANT	EQU 25			;значение 2-го уровня 1-го фактора
+TZA 	EQU 100			;значение 2-го уровня 2-го фактора 
+
+RMULT 	401
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,1)
+CLEAR  	OFF
+RMULT 	411
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,2)
+CLEAR  	OFF
+RMULT 	421
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,3)
+CLEAR  	OFF
+RMULT 	431
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,4)
+CLEAR  	OFF
+RMULT 	441
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,5)
+CLEAR  	OFF
+RMULT 	451
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,6)
+CLEAR  	OFF
+RMULT 	461
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,7)
+CLEAR  	OFF
+RMULT 	471
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,8)
+CLEAR  	OFF
+RMULT 	481
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,9)
+CLEAR  	OFF
+RMULT 	491
+START   	1,NP
+S_ 	EQU 	ToMatr(2,2,10)
+CLEAR  	OFF
